@@ -1,11 +1,7 @@
-import React from 'react'
+//import React from 'react'
 
-function DoctorDetails() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const DoctorDetails = () => {
+  return <div>DoctorDetails</div>;
+};
 
-export default DoctorDetails
+export default DoctorDetails;

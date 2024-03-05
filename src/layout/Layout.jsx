@@ -2,7 +2,7 @@
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Routers from "../routes/Routers";
-export const Layout = () => {
+const Layout = () => {
   return (
     <>
       <Header />
@@ -13,3 +13,4 @@ export const Layout = () => {
     </>
   );
 };
+export default Layout;
