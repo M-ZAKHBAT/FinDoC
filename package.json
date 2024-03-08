@@ -1,0 +1,20 @@
+{
+  "name": "findoc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces":[
+    "backend","frontend"
+  ],
+  "private":true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"concurrently \"cd frontend && npm run dev\" \"cd backend && npm run serve\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
