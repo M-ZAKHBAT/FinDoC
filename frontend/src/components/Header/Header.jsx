@@ -19,8 +19,8 @@ const navLinks = [
     display: "Services",
   },
   {
-    path: "/contrat",
-    display: "Contrat",
+    path: "/contact",
+    display: "Contact",
   },
 ];
 const Header = () => {
