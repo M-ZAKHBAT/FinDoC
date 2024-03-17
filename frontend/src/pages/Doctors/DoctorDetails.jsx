@@ -1,9 +1,9 @@
-//import React from 'react'
 import { useState } from "react";
 import DoctorAbout from "./DoctorAbout";
 import Feedback from "./Feedback";
 import doctorImg from "../../assets/images/doctor-img02.png";
 import starIcon from "../../assets/images/Star.png";
+import SidePanel from "./SidePanel";
 const DoctorDetails = () => {
   const [tab, setTab] = useState("about");
 
@@ -65,7 +65,9 @@ const DoctorDetails = () => {
             </div>
           </div>
 
-          <div></div>
+          <div>
+            <SidePanel />
+          </div>
         </div>
       </div>
     </section>
