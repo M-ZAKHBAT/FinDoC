@@ -23,7 +23,7 @@ export const register = async (req, res) => {
     } else if (role === "doctor") {
       user = await Doctor.findOne({ email });
     }
-    console.log(user);
+    // console.log(user);
     // tester si user Existe
     if (user) {
       return res.status(400).json({ message: "User already exist" });
