@@ -3,7 +3,7 @@ import {
   deleteDoctor,
   getAllDoctor,
   getSingleDoctor,
-} from "../Controllers/DoctorController.js";
+} from "../Controllers/doctorController.js";
 import express from "express";
 
 const router = express.Router();
