@@ -15,8 +15,11 @@ const Profile = () => {
     qualifications: [
       { startingDate: "", endingDate: "", degree: "", university: "" },
     ],
-    experiences: [],
-    timeSlots: [],
+    experiences: [
+      { startingDate: "", endingDate: "", postion: "", hospital: "" },
+    ],
+    timeSlots: [{ day: "", startingTime: "", endingTime: "" }],
+    about: "",
   });
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -172,10 +175,134 @@ const Profile = () => {
               </div>
             </div>
           ))}
-          <button className="bg-[#000] py-2 px-5 rounded text-white">
+          <button className="bg-[#000] py-2 px-5 rounded text-white h-fit cursor-pointer">
             Add Qualification
           </button>
         </div>
+        <div className="mb-5">
+          <p className="form__label">Experiences</p>
+          {formData.experiences?.map((item, index) => (
+            <div key={index}>
+              <div>
+                <div className="grid grid-cols-2 gap-5">
+                  <div>
+                    <p className="form__label"> Starting Date+</p>
+                    <input
+                      type="date"
+                      name="staringDate"
+                      value={item.startingDate}
+                      className="form__input"
+                    />
+                  </div>
+                  <div>
+                    <p className="form__label"> Ending Date+</p>
+                    <input
+                      type="date"
+                      name="staringDate"
+                      value={item.endingDate}
+                      className="form__input"
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-5 mt-5">
+                  <div>
+                    <p className="form__label"> Position+</p>
+                    <input
+                      type="text"
+                      name="position"
+                      value={item.position}
+                      className="form__input"
+                    />
+                  </div>
+                  <div>
+                    <p className="form__label"> Hospital+</p>
+                    <input
+                      type="text"
+                      name="hospital"
+                      value={item.hospital}
+                      className="form__input"
+                    />
+                  </div>
+                </div>
+
+                <button className="bg-red-600 p-2 rounded-full text-white text-[18px] mt-2 mb-[30px] cursor-pointer">
+                  <AiOutlineDelete />
+                </button>
+              </div>
+            </div>
+          ))}
+          <button className="bg-[#000] py-2 px-5 rounded text-white h-fit cursor-pointer">
+            Add Experience
+          </button>
+        </div>
+        <div className="mb-5">
+          <p className="form__label">Time Slots</p>
+          {formData.timeSlots?.map((item, index) => (
+            <div key={index}>
+              <div>
+                <div className="grid grid-cols-2 md:grid-cols-4 mb-[30px] gap-5">
+                  <div>
+                    <p className="form__label"> Day+</p>
+                    <select
+                      name="day"
+                      value={item.day}
+                      className="form__input py-3.5"
+                    >
+                      <option value="">Select</option>
+                      <option value="saturday">saturday</option>
+                      <option value="sunday">sunday</option>
+                      <option value="monday">monday</option>
+                      <option value="tuesday">tuesday</option>
+                      <option value="wednesday">wednesday</option>
+                      <option value="thursday">thursday</option>
+                      <option value="friday">friday</option>
+                    </select>
+                  </div>
+                  <div>
+                    <p className="form__label"> Starting Time+</p>
+                    <input
+                      type="time"
+                      name="startingTime"
+                      value={item.startingTime}
+                      className="form__input"
+                    />
+                  </div>
+                  <div>
+                    <p className="form__label"> Ending Time+</p>
+                    <input
+                      type="time"
+                      name="endingTime"
+                      value={item.endingTime}
+                      className="form__input"
+                    />
+                  </div>
+                  <div className="flex items-center">
+                    <button className="bg-red-600 p-2 rounded-full text-white text-[18px] cursor-pointer mt-6">
+                      <AiOutlineDelete />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+          <button className="bg-[#000] py-2 px-5 rounded text-white h-fit cursor-pointer">
+            Add TimeSlots
+          </button>
+        </div>
+
+        <div className="mb-5">
+          <p className="form__label"> About+</p>
+          <textarea
+            name="about"
+            rows={5}
+            value={formData.about}
+            placeholder="Write about you"
+            onChange={handleInputChange}
+            className="form__input"
+          ></textarea>
+        </div>
+
+        <div className="mb-5 flex items-center gap-3"></div>
       </form>
     </div>
   );
