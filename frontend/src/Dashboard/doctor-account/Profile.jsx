@@ -1,6 +1,7 @@
 // import React from 'react'
 
 import { useState } from "react";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const Profile = () => {
   const [formData, setFormData] = useState({
@@ -144,7 +145,7 @@ const Profile = () => {
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-5">
+                <div className="grid grid-cols-2 gap-5 mt-5">
                   <div>
                     <p className="form__label"> Degree+</p>
                     <input
@@ -164,9 +165,16 @@ const Profile = () => {
                     />
                   </div>
                 </div>
+
+                <button className="bg-red-600 p-2 rounded-full text-white text-[18px] mt-2 mb-[30px] cursor-pointer">
+                  <AiOutlineDelete />
+                </button>
               </div>
             </div>
           ))}
+          <button className="bg-[#000] py-2 px-5 rounded text-white">
+            Add Qualification
+          </button>
         </div>
       </form>
     </div>
