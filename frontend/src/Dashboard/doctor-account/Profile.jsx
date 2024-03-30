@@ -21,7 +21,7 @@ const Profile = ({ doctorData }) => {
     experiences: [],
     timeSlots: [],
     about: "",
-    photo: null,
+    photo: "",
   });
 
   useEffect(() => {
@@ -102,8 +102,8 @@ const Profile = ({ doctorData }) => {
     addItem("qualifications", {
       startingDate: "",
       endingDate: "",
-      degree: "PHD",
-      university: "Sheikh Zayed Medical college",
+      degree: "",
+      university: "",
     });
   };
 
@@ -121,8 +121,8 @@ const Profile = ({ doctorData }) => {
     addItem("experiences", {
       startingDate: "",
       endingDate: "",
-      position: "Senior Surgeon",
-      hospital: "Sheikh Zayed",
+      position: "",
+      hospital: "",
     });
   };
 
@@ -217,8 +217,8 @@ const Profile = ({ doctorData }) => {
                 className="form__input py-3.5"
               >
                 <option value="">Select</option>
-                <option value="">Male</option>
-                <option value="">Femal</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
               </select>
             </div>
 
