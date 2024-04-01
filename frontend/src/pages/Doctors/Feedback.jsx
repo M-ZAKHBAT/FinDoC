@@ -4,6 +4,7 @@ import { formateDate } from "../../utils/formateDate";
 import { AiFillStar } from "react-icons/ai";
 import { useState } from "react";
 import FeedbackForm from "./FeedbackForm";
+
 // eslint-disable-next-line react/prop-types
 const Feedback = ({ reviews, totalRating }) => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -17,7 +18,6 @@ const Feedback = ({ reviews, totalRating }) => {
           <div key={index} className="flex justify-between gap-10 mb-[30px]">
             <div className="flex gap-3">
               <figure className="w-10 h-10 rounded-full">
-                {JSON.stringify(review.user)}
                 <img className="w-full" src={review?.user?.photo} alt="" />
               </figure>
 

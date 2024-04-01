@@ -61,7 +61,7 @@ export const getSingleDoctor = async (req, res) => {
 export const getAllDoctor = async (req, res) => {
   try {
     const { query } = req.query;
-    console.log(query);
+
     let doctors;
     if (query) {
       doctors = await Doctor.find({

@@ -21,7 +21,7 @@ const FeedbackForm = () => {
         return toast.error("please fill out your Rating & Review");
       }
       const res = await fetch(`${BASE_URL}/doctors/${id}/reviews`, {
-        method: "POST",
+        method: "post",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
