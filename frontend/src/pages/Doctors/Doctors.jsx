@@ -1,5 +1,4 @@
 import DoctorCard from "./../../components/Doctors/DoctorCard";
-//import { doctors } from "./../../assets/data/doctors";
 import Testimonial from "./../../components/Testimonial/Testimonial";
 import { BASE_URL } from "../../config";
 import useFetchData from "../../hooks/useFetchData";
@@ -12,10 +11,13 @@ const Doctors = () => {
   const [debounceQuery, setDebounceQuery] = useState("");
 
   const handleSearch = () => {
-    setQuery(query.trim());
-    console.log("handle search");
+    // setQuery(query.trim());
+    // console.log("handle search");
+    // Vérifier si la valeur de recherche n'est pas vide
+    if (query.trim() !== "") {
+      setQuery(query.trim());
+    }
   };
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       setDebounceQuery(query);
@@ -55,6 +57,9 @@ const Doctors = () => {
         <div className="container">
           {loading && <Loader />}
           {error && <Error />}
+          {!loading && !error && doctors.length === 0 && (
+            <div>Aucun médecin trouvé</div>
+          )}
           {!loading && !error && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 ">
               {doctors.map((doctor) => (

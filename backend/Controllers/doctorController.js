@@ -61,6 +61,7 @@ export const getSingleDoctor = async (req, res) => {
 export const getAllDoctor = async (req, res) => {
   try {
     const { query } = req.query;
+    console.log(query);
     let doctors;
     if (query) {
       doctors = await Doctor.find({
@@ -71,7 +72,9 @@ export const getAllDoctor = async (req, res) => {
         ],
       }).select("-password");
     } else {
-      doctors = await Doctor.find({}).select("-password");
+      doctors = await Doctor.find({ isApproved: "approved" }).select(
+        "-password"
+      );
     }
     // console.log(Doctors);
     res.status(200).json({
