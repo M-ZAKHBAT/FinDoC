@@ -27,6 +27,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.2",
+    "stripe": "^14.23.0",
     "swiper": "^11.0.7"
   },
   "description": ""
