@@ -19,7 +19,7 @@ export const updateUser = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Failed to update",
-      data: updateUser,
+      data: undefined,
     });
   }
 };

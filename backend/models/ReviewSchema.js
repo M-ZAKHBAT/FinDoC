@@ -28,12 +28,13 @@ const reviewSchema = new mongoose.Schema(
 reviewSchema.pre(/^find/, function (next) {
   this.populate({
     path: "user",
+    model: "User",
     select: "name photo",
   });
   next();
 });
 
-reviewSchema.statics.clacAverageRatings = async function (doctorId) {
+reviewSchema.statics.calcAverageRatings = async function (doctorId) {
   const stats = await this.aggregate([
     {
       $match: { doctor: doctorId },
@@ -53,6 +54,6 @@ reviewSchema.statics.clacAverageRatings = async function (doctorId) {
   });
 };
 reviewSchema.post("save", function () {
-  this.constructor.clacAverageRatings(this.doctor);
+  this.constructor.calcAverageRatings(this.doctor);
 });
 export default mongoose.model("Review", reviewSchema);

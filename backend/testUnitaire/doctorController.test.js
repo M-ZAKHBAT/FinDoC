@@ -1,37 +1,11 @@
-// import { getAllDoctor } from "./Controllers/doctorController.js";
-
-// const req = {
-//   query: {},
-// };
-
-// const res = {
-//   status: jest.fn().mockReturnThis(), // Correction ici
-//   json: jest.fn(), // Correction ici
-// };
-
-// describe("getAllDoctor function", () => {
-//   it("should return success true and doctor data", async () => {
-//     // Appel de la fonction à tester
-//     await getAllDoctor(req, res);
-
-//     // Vérification si la fonction a été appelée avec le bon statut
-//     expect(res.status).toHaveBeenCalledWith(200);
-
-//     // Vérification si la fonction a été appelée avec les bonnes données
-//     expect(res.json).toHaveBeenCalledWith({
-//       success: true,
-//       message: "Users Found",
-//       data: expect.any(Array), // Vérifie si data est un tableau
-//     });
-//   });
-// });
 // doctorController.test.js
 
-import { updateDoctor } from "./Controllers/doctorController.js";
-import Doctor from "./models/DoctorSchema.js";
+import { updateDoctor, deleteDoctor } from "../Controllers/doctorController.js";
+import Doctor from "../models/DoctorSchema.js";
 
-jest.mock("./models/DoctorSchema.js", () => ({
+jest.mock("../models/DoctorSchema.js", () => ({
   findByIdAndUpdate: jest.fn(),
+  findByIdAndDelete: jest.fn(),
 }));
 
 describe("updateDoctor", () => {
@@ -76,6 +50,45 @@ describe("updateDoctor", () => {
       success: false,
       message: "Failed to update",
       data: undefined,
+    });
+  });
+});
+
+describe("deleteDoctor", () => {
+  it("should delete a doctor successfully", async () => {
+    Doctor.findByIdAndDelete.mockResolvedValue();
+
+    const req = {
+      params: { id: "mockDoctorId" },
+    };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+
+    await deleteDoctor(req, res);
+
+    expect(Doctor.findByIdAndDelete).toHaveBeenCalledWith("mockDoctorId");
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith({
+      success: true,
+      message: "successfully deleted",
+    });
+  });
+
+  it("should handle errors when deleting doctor", async () => {
+    const errorMessage = "Delete failed";
+    Doctor.findByIdAndDelete.mockRejectedValue(new Error(errorMessage));
+
+    const req = {
+      params: { id: "mockDoctorId" },
+    };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+
+    await deleteDoctor(req, res);
+
+    expect(Doctor.findByIdAndDelete).toHaveBeenCalledWith("mockDoctorId");
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({
+      success: false,
+      message: "Failed to delete",
     });
   });
 });
