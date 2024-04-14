@@ -85,13 +85,14 @@ export const getAllDoctor = async (req, res) => {
     // console.log(Doctors);
     res.status(200).json({
       success: true,
-      message: "Users Found",
+      message: "Doctors Found",
       data: doctors,
     });
   } catch (err) {
     res.status(500).json({
       success: false,
       message: "Not found",
+      error: err.message,
     });
   }
 };

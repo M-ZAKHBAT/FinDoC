@@ -25,11 +25,24 @@ const reviewSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// reviewSchema.pre(/^find/, function (next) {
+//   this.populate({
+//     path: "user",
+//     model: "User",
+//     select: "name photo",
+//   });
+//   next();
+// });
 reviewSchema.pre(/^find/, function (next) {
+  console.log("Populating user and doctor fields...");
   this.populate({
     path: "user",
     model: "User",
-    select: "name photo",
+    select: "name photo", // Peupler uniquement les champs nécessaires de l'utilisateur
+  }).populate({
+    path: "doctor",
+    model: "Doctor",
+    select: "name photo", // Peupler uniquement les champs nécessaires du médecin
   });
   next();
 });
@@ -48,10 +61,19 @@ reviewSchema.statics.calcAverageRatings = async function (doctorId) {
     },
   ]);
 
-  await DoctorSchema.findByIdAndUpdate(doctorId, {
-    totalRating: stats[0].numOfRating,
-    averageRating: stats[0].avgRating,
-  });
+  if (stats.length > 0) {
+    await DoctorSchema.findByIdAndUpdate(doctorId, {
+      totalRating: stats[0].numOfRating,
+      averageRating: stats[0].avgRating,
+    });
+  } else {
+    // Aucune critique n'a encore été enregistrée pour ce médecin
+    // Mise à jour des statistiques avec des valeurs par défaut
+    await DoctorSchema.findByIdAndUpdate(doctorId, {
+      totalRating: 0,
+      averageRating: 0,
+    });
+  }
 };
 reviewSchema.post("save", function () {
   this.constructor.calcAverageRatings(this.doctor);

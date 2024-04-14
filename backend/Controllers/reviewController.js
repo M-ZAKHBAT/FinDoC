@@ -1,11 +1,11 @@
 import Review from "../models/ReviewSchema.js";
 import Doctor from "../models/DoctorSchema.js";
 
-//get all reviews
+// get all reviews
 export const getAllReviews = async (req, res) => {
   try {
     const reviews = await Review.find({});
-    console.log("All Reviews:", reviews);
+    // console.log("All Reviews:", reviews);
     res
       .status(200)
       .json({ success: true, message: "successful", data: reviews });
@@ -14,12 +14,12 @@ export const getAllReviews = async (req, res) => {
   }
 };
 
-//Create review
+// Create review
 export const createReview = async (req, res) => {
   if (!req.body.doctor) req.body.doctor = req.params.doctorId;
   if (!req.body.user) {
     console.log("User ID:", req.params.userId); // Ajout du console.log
-    req.body.user = req.params.userId;
+    req.body.user = req.userId;
   }
 
   const newReview = new Review(req.body);

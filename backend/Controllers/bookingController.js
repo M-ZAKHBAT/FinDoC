@@ -5,7 +5,9 @@ import Stripe from "stripe";
 
 export const getCheckoutSession = async (req, res) => {
   try {
+    console.log("UserID:", req.userId);
     const doctor = await Doctor.findById(req.params.doctorId);
+    console.log("Doctor:", doctor);
     const user = await User.findById(req.userId);
     if (!user || !user.email) {
       throw new Error("User not found or user email is not defined");
@@ -35,7 +37,7 @@ export const getCheckoutSession = async (req, res) => {
             currency: "usd", // Changement de devise en USD
             unit_amount: ticketPriceInCents,
             product_data: {
-              name: doctor.name,
+              name: user.name,
               description: doctor.bio,
               images: [doctor.photo],
             },
