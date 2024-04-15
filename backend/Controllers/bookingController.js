@@ -9,6 +9,7 @@ export const getCheckoutSession = async (req, res) => {
     const doctor = await Doctor.findById(req.params.doctorId);
     console.log("Doctor:", doctor);
     const user = await User.findById(req.userId);
+    console.log("User:", user);
     if (!user || !user.email) {
       throw new Error("User not found or user email is not defined");
     }
