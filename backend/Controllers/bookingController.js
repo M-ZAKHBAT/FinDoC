@@ -5,11 +5,11 @@ import Stripe from "stripe";
 
 export const getCheckoutSession = async (req, res) => {
   try {
-    console.log("UserID:", req.userId);
+    // console.log("UserID:", req.userId);
     const doctor = await Doctor.findById(req.params.doctorId);
-    console.log("Doctor:", doctor);
+    // console.log("Doctor:", doctor);
     const user = await User.findById(req.userId);
-    console.log("User:", user);
+    // console.log("User:", user);
     if (!user || !user.email) {
       throw new Error("User not found or user email is not defined");
     }

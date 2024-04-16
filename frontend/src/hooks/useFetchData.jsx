@@ -5,12 +5,11 @@ const useFetchData = (url) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  //s'exécute à chaque modification de l'URL
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        
         const res = await fetch(url, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -28,7 +27,7 @@ const useFetchData = (url) => {
       }
     };
     fetchData();
-  }, [url]);
+  }, [url]); //uniquement lorsque l'URL change
 
   return {
     data,

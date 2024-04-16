@@ -11,7 +11,7 @@ const initialState = {
   token: localStorage.getItem("token") || null,
 };
 export const authContext = createContext(initialState);
-
+//gestion des actions d'authentification
 const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN_START":
@@ -36,9 +36,10 @@ const authReducer = (state, action) => {
       return state;
   }
 };
-
+// Composant fournisseur de contexte d'authentification
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
+  //MAJ localstorage
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(state.user));
     localStorage.setItem("token", state.token);

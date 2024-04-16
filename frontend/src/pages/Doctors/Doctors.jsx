@@ -7,8 +7,8 @@ import Error from "../../components/Error/Error";
 import { useEffect, useState } from "react";
 
 const Doctors = () => {
-  const [query, setQuery] = useState("");
-  const [debounceQuery, setDebounceQuery] = useState("");
+  const [query, setQuery] = useState(""); // stocker la valeur de recherche
+  const [debounceQuery, setDebounceQuery] = useState(""); //stocker la valeur après un délai
 
   const handleSearch = () => {
     // setQuery(query.trim());
