@@ -8,11 +8,12 @@ import userRoute from "./Routes/user.js";
 import doctorRoute from "./Routes/doctor.js";
 import reviewRoute from "./Routes/review.js";
 import bookingRoute from "./Routes/booking.js";
+// import path from "path";
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 8000;
-
+// const __dirname = path.resolve();
 const corsOptions = {
   origin: true,
 };
@@ -36,12 +37,12 @@ const connectDB = async () => {
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
-app.get("*", (req, res) => {
-  // Specify the path to the index.html file
-  // Send the index.html file as the response
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-});
+// app.use(express.static(path.join(__dirname, "/frontend/dist")));
+// app.get("*", (req, res) => {
+//   // Specify the path to the index.html file
+//   // Send the index.html file as the response
+//   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+// });
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/doctors", doctorRoute);
