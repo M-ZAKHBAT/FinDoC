@@ -7,7 +7,7 @@ import FeedbackForm from "./FeedbackForm";
 
 // eslint-disable-next-line react/prop-types
 const Feedback = ({ reviews, totalRating }) => {
-  console.log("Review", reviews);
+  // console.log("Review", reviews);
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
   return (
     <div>

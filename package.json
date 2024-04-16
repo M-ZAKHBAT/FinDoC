@@ -10,7 +10,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm run serve\""
+    "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm run serve\"",
+    "build": "npm install && npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "zakhbat mohammed",

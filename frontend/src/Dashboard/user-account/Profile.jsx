@@ -14,7 +14,7 @@ const Profile = ({ user }) => {
     name: "",
     email: "",
     password: "",
-    photo: null,
+    photo: "",
     gender: "",
     bloodType: "",
   });
@@ -23,11 +23,11 @@ const Profile = ({ user }) => {
 
   useEffect(() => {
     setFormData({
-      name: user.name,
-      email: user.email,
-      photo: user.photo,
-      gender: user.gender,
-      bloodType: user.bloodType,
+      name: user.name || "",
+      email: user.email || "",
+      photo: user.photo || "",
+      gender: user.gender || "",
+      bloodType: user.bloodType || "",
     });
   }, [user]);
 
@@ -66,7 +66,7 @@ const Profile = ({ user }) => {
 
       setLoading(false);
       toast.success(message);
-      navigate("/users/profile/me");
+            navigate("/users/profile/me");
     } catch (err) {
       toast.error(err.message);
       setLoading(false);

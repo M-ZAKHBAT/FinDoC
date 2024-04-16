@@ -43,7 +43,7 @@ const Header = () => {
   useEffect(() => {
     handleStickyHeader();
     return () => window.removeEventListener("scroll", handleStickyHeader);
-  });
+  }, []);
 
   const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
 
@@ -90,6 +90,9 @@ const Header = () => {
                     />
                   </figure>
                 </Link>
+                <span className="text-sm font-semibold text-center text-blue-500">
+                  {user?.name}
+                </span>
               </div>
             ) : (
               <Link to="/login">
