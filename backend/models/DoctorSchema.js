@@ -10,7 +10,7 @@ const DoctorSchema = new mongoose.Schema({
   role: {
     type: String,
   },
-
+  gender: { type: String, enum: ["male", "female", "other"] },
   // Fields for doctors only
   specialization: { type: String },
   qualifications: {
@@ -36,9 +36,20 @@ const DoctorSchema = new mongoose.Schema({
   isApproved: {
     type: String,
     enum: ["pending", "approved", "cancelled"],
-    default: "pending",
+    default: "approved",
   },
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
 });
+// DoctorSchema.pre(/^find/, function (next) {
+//   this.populate({
+//     path: "appointments",
+//     model: "Appointment",
+//   }).populate({
+//     path: "appointments.user",
+//     model: "User",
+//     // select: "name", // Sélectionnez les champs que vous souhaitez inclure
+//   });
+//   next();
+// });
 
 export default mongoose.model("Doctor", DoctorSchema);
