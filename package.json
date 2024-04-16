@@ -1,22 +1,17 @@
 {
-  "name": "findoc",
-  "version": "1.0.0",
-  "type": "module",
-  "main": "index.js",
+    "private": true,
+ 
   "workspaces": [
     "backend",
     "frontend"
   ],
-  "private": true,
+
   "scripts": {
     "test": "jest",
     "start": "node backend/index.js",
-    "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm run serve\"",
-    "build": "npm install && npm install --prefix client && npm run build --prefix client"
+    "dev": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm run serve\""
   },
-  "keywords": [],
-  "author": "zakhbat mohammed",
-  "license": "ISC",
+ 
   "devDependencies": {
     "@babel/core": "^7.24.4",
     "@babel/preset-env": "^7.24.4",
