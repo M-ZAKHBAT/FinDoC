@@ -26,18 +26,18 @@ const Profile = ({ doctorData }) => {
 
   useEffect(() => {
     setFormData({
-      name: doctorData?.name,
-      email: doctorData?.email,
-      phone: doctorData?.phone,
-      bio: doctorData?.bio,
-      gender: doctorData?.gender,
-      specialization: doctorData?.specialization,
-      ticketPrice: doctorData?.ticketPrice,
-      qualifications: doctorData?.qualifications,
-      experiences: doctorData?.experiences,
-      timeSlots: doctorData?.timeSlots,
-      about: doctorData?.about,
-      photo: doctorData?.photo,
+      name: doctorData.name || "",
+      email: doctorData.email || "",
+      phone: doctorData.phone || "",
+      bio: doctorData.bio || "",
+      gender: doctorData.gender || "",
+      specialization: doctorData.specialization || "",
+      ticketPrice: doctorData.ticketPrice || "0",
+      qualifications: doctorData.qualifications || [],
+      experiences: doctorData.experiences || [],
+      timeSlots: doctorData.timeSlots || [],
+      about: doctorData.about || "",
+      photo: doctorData.photo || null,
     });
   }, [doctorData]);
   const handleInputChange = (e) => {

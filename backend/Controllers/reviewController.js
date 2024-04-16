@@ -18,12 +18,12 @@ export const getAllReviews = async (req, res) => {
 export const createReview = async (req, res) => {
   if (!req.body.doctor) req.body.doctor = req.params.doctorId;
   if (!req.body.user) {
-    console.log("User ID:", req.params.userId); // Ajout du console.log
+    // console.log("User ID:", req.params.userId);
     req.body.user = req.userId;
   }
 
   const newReview = new Review(req.body);
-  console.log("New Review Data:", newReview);
+  // console.log("New Review Data:", newReview);
   try {
     const savedReview = await newReview.save();
 
